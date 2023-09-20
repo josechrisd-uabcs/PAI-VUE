@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue.js</title>
-    <style>
-        #app{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-    </style>
-</head>
-<body>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <div id="app">
-        <h1>Hola {{nombre}}</h1>
-        <input type="text" v-model="nombre">
-        <button @click="event => count++">Count: {{count}}</button>
-        <hr>
-        <input type="number" v-model="a"><br>
-        <input type="number" v-model="b"><br>
-        <button @click="event => result = a + b">Sumar</button>
-        <h1 v-if="result !== null">Resultado: {{result}}</h1>
-    </div>
-    <script>
-        const { createApp, ref } = Vue
-
-        createApp({
-            setup() {
-                return {
-                    nombre: ref(''),
-                    count: ref(0),
-                    a: ref(0),
-                    b: ref(0),
-                    result: ref(null),
-                }
-            }
-        }).mount('#app')
-    </script>
-</body>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
