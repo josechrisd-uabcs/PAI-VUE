@@ -7,12 +7,12 @@ const props = defineProps<{
 </script>
 
 <template>
-  <main>
     <table>
         <thead>
             <td>Nombre</td>
             <td>Email</td>
             <td>Contraseña</td>
+            <td>Acciones</td>
         </thead>
         <tbody>
             <tr v-for="(user, i) in props.usuarios" :key="i">
@@ -25,14 +25,33 @@ const props = defineProps<{
                 <td>
                     {{ user.password }}
                 </td>
+                <td>
+                    <button @click="(e) => editUser(e, i)">Editar</button>
+                    <button @click="(e) => deleteUser(e, i)">Eliminar</button>
+                </td>
             </tr>
         </tbody>
     </table>
-  </main>
 </template>
 
 <script lang="ts">
 export default {
+    methods: {
+        editUser(e: Event, i: number){
+            e.preventDefault()
+            this.$emit('edit', {
+                index: i,
+                user: this.usuarios[i]
+            })
+        },
+        deleteUser(e: Event, i: number){
+            e.preventDefault()
+            this.$emit('delete', {
+                index: i,
+                user: this.usuarios[i]
+            })
+        }
+    }
 }
 </script>
 
